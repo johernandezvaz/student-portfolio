@@ -13,7 +13,9 @@ export function initSkillsCarousel() {
         { name: 'PyTorch', image: 'images/pytorch.png' },
         { name: 'Flutter', image: 'images/flutter.png' },
         { name: 'Java', image: 'images/java.png' },
-        { name: 'C#', image: 'images/csharp.png' }
+        { name: 'C#', image: 'images/csharp.png' },
+        { name: 'C++', image: 'images/cpp.png' },
+        { name: 'Rust', image: 'images/rust.png' }
     ];
     
     const track = document.querySelector('.skills-track');

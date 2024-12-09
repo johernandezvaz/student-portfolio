@@ -1,60 +1,96 @@
 export function initProjects() {
     const projects = [
+        // Machine Learning Projects
         {
-            title: 'Clasificador de Imágenes',
-            description: 'Modelo de deep learning para clasificación de imágenes usando TensorFlow y CNN',
-            image: 'images/projects/ml-classifier.jpg',
+            title: 'Reconocimiento de Dígitos',
+            description: 'Modelo de deep learning para reconocimiento de dígitos manuscritos usando PyTorch.',
+            image: 'images/projects/digits-recognition.png',
+            link: 'https://www.kaggle.com/code/thisivazqz/reconocimiento-de-digitos-pytorch',
             category: 'machine-learning',
-            tags: ['Python', 'TensorFlow', 'CNN']
+            tags: ['PyTorch', 'Deep Learning', 'Computer Vision']
         },
         {
-            title: 'Análisis de Sentimientos',
-            description: 'Sistema de análisis de sentimientos en tiempo real para redes sociales',
-            image: 'images/projects/ml-sentiment.jpg',
+            title: 'Predicción de Obesidad',
+            description: 'Sistema de predicción de obesidad utilizando técnicas de machine learning y PyTorch.',
+            image: 'images/projects/obesity-prediction.jpg',
+            link: 'https://www.kaggle.com/code/thisivazqz/predicci-n-de-la-obesidad-pytorch',
             category: 'machine-learning',
-            tags: ['Python', 'NLTK', 'scikit-learn']
+            tags: ['PyTorch', 'Machine Learning', 'Healthcare']
         },
         {
-            title: 'E-commerce Dashboard',
-            description: 'Panel de administración para tienda online con análisis en tiempo real',
-            image: 'images/projects/web-dashboard.jpg',
+            title: 'Desempeño de Alumnos',
+            description: 'Análisis predictivo del rendimiento académico de estudiantes.',
+            image: 'images/projects/student-performance.jpg',
+            link: 'https://www.kaggle.com/code/thisivazqz/desempe-o-de-los-alumnos',
+            category: 'machine-learning',
+            tags: ['Data Analysis', 'Education', 'Predictive Modeling']
+        },
+        {
+            title: 'Felicidad Mundial',
+            description: 'Análisis de tendencias de felicidad global a través de los años.',
+            image: 'images/projects/world-happiness.jpg',
+            link: 'https://www.kaggle.com/code/thisivazqz/felicidad-mundial-a-trav-s-de-los-a-os',
+            category: 'machine-learning',
+            tags: ['Data Visualization', 'Time Series', 'Global Analysis']
+        },
+
+        // Web Development Projects
+        {
+            title: 'Noubeau',
+            description: 'Plataforma web para servicios de belleza y bienestar.',
+            image: 'images/projects/noubeau.jpg',
+            link: 'https://www.noubeau.com/',
             category: 'web',
-            tags: ['React', 'Node.js', 'MongoDB']
+            tags: ['HTML', 'CSS', 'Full Stack']
         },
         {
-            title: 'Blog Personal',
-            description: 'Blog minimalista con sistema de gestión de contenidos',
-            image: 'images/projects/web-blog.jpg',
+            title: 'ASECALAB',
+            description: 'Sitio web corporativo para laboratorio de análisis clínicos.',
+            image: 'images/projects/asecalab.jpg',
+            link: 'https://www.asecalab.com.mx/',
             category: 'web',
-            tags: ['Vue.js', 'Firebase', 'Tailwind']
+            tags: ['HTML', 'JS', 'Full Stack']
         },
         {
-            title: 'App de Fitness',
-            description: 'Aplicación móvil para seguimiento de rutinas de ejercicio',
-            image: 'images/projects/mobile-fitness.jpg',
-            category: 'mobile',
-            tags: ['Flutter', 'Firebase', 'BLoC']
+            title: 'SigMundFiles',
+            description: 'Sistema de gestión de archivos y documentos.',
+            image: 'images/projects/sigmundfiles.jpg',
+            link: 'https://github.com/johernandezvaz/SigMundFiles',
+            category: 'web',
+            tags: ['Django', 'Python', 'Web App']
         },
         {
-            title: 'Chat en Tiempo Real',
-            description: 'Aplicación de mensajería instantánea multiplataforma',
-            image: 'images/projects/mobile-chat.jpg',
+            title: 'CodeCuu',
+            description: 'Plataforma educativa para aprendizaje de programación.',
+            image: 'images/projects/codec.jpg',
+            link: 'https://www.codecuu.com/',
+            category: 'web',
+            tags: ['HTML', 'CSS', 'Event']
+        },
+
+        // Mobile Development Projects
+        {
+            title: 'CODEC Mobile',
+            description: 'Aplicación móvil para gestión de códigos y snippets.',
+            image: 'images/projects/codec.jpg',
+            link: 'https://github.com/johernandezvaz/CODEC_MOBILE',
             category: 'mobile',
-            tags: ['React Native', 'Socket.io', 'Redux']
+            tags: ['Flutter', 'Mobile App', 'Cross-platform']
         }
     ];
 
     const projectsGrid = document.getElementById('projectsGrid');
     const filterButtons = document.querySelectorAll('.filter-btn');
 
-    function renderProjects(category = 'all') {
-        const filteredProjects = category === 'all' 
-            ? projects 
-            : projects.filter(project => project.category === category);
-
-        projectsGrid.innerHTML = filteredProjects.map(project => `
-            <div class="project-card">
-                <img src="${project.image}" alt="${project.title}" class="project-image">
+    function createProjectCard(project) {
+        return `
+            <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="project-card">
+                <div class="project-image-container">
+                    <img src="${project.image}" alt="${project.title}" class="project-image">
+                    <div class="project-overlay">
+                        <span class="view-project">Ver Proyecto</span>
+                    </div>
+                </div>
                 <div class="project-info">
                     <h3 class="project-title">${project.title}</h3>
                     <p class="project-description">${project.description}</p>
@@ -64,8 +100,24 @@ export function initProjects() {
                         `).join('')}
                     </div>
                 </div>
-            </div>
-        `).join('');
+            </a>
+        `;
+    }
+
+    function renderProjects(category = 'all') {
+        const filteredProjects = category === 'all' 
+            ? projects 
+            : projects.filter(project => project.category === category);
+
+        projectsGrid.innerHTML = filteredProjects.map(createProjectCard).join('');
+
+        // Añadir animación de entrada a las tarjetas
+        const cards = projectsGrid.querySelectorAll('.project-card');
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('show');
+            }, index * 100);
+        });
     }
 
     filterButtons.forEach(button => {
