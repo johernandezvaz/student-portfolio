@@ -1,0 +1,55 @@
+:root {
+    --primary-color: #6C3AE7;
+    --secondary-color: #8B5CF6;
+    --background-color: #0A001A;
+    --text-color: #FFFFFF;
+    --text-secondary: #B4B4B4;
+    --section-padding: 5rem 2rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+section {
+    padding: var(--section-padding);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.download-cv {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 500;
+}
+
+.download-cv:hover {
+    background-color: var(--secondary-color);
+}
