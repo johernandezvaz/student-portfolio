@@ -53,6 +53,42 @@
     color: var(--text-secondary);
 }
 
+.about-description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.about-description p {
+    margin-bottom: 1.5rem;
+}
+
+.about-description h3 {
+    color: var(--text-color);
+    margin: 2rem 0 1rem;
+    font-size: 1.25rem;
+}
+
+.key-skills {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.key-skills li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.key-skills li::before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    font-size: 1.2em;
+}
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -82,4 +118,18 @@
 .signature {
     margin: 2rem 0;
     max-width: 200px;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-description {
+        text-align: left;
+    }
+    
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
 }
