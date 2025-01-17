@@ -38,7 +38,7 @@ export function initProjects() {
         {
             title: 'Maikua',
             description: 'Sitio web corporativo para para servicios de IA, IoT, Desarrollo Web & Móvil',
-            image: 'images/projects/maikua.jpg',
+            image: 'images/projects/maikua.png',
             link: 'https://www.maikua.com.mx/',
             category: 'web',
             tags: ['HTML', 'JS', 'Full Stack']
